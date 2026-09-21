@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Talk to Grey Horse Talent about a technical search across foundational software, hardware, robotics, autonomy or technical leadership.">
+<!-- Client review prototype only. Remove noindex before the Webflow page is published. -->
+<title>Start a Search | Grey Horse Talent</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,500;0,600;1,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#242426;--charcoal:#2B2B2D;--crimson:#A32638;--cream:#F7F6F3;--paper:#FCFBF8;
+  --mid:#6E6E72;--light:#DCDBD8;--hair:rgba(36,36,38,.14);--hair-dark:rgba(247,246,243,.14);
+  --max:1600px;--gutter:clamp(22px,4.9vw,78px);--header:76px;
+  --ease:cubic-bezier(.2,.72,.2,1);--ease-out:cubic-bezier(.16,1,.3,1)
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--cream);scroll-padding-top:calc(var(--header) + 20px)}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:Arial,Helvetica,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body.menu-open{overflow:hidden}
+a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit;color:inherit}img,svg{display:block;max-width:100%}
+::selection{background:var(--crimson);color:#fff}
+.wrap{width:100%;max-width:var(--max);margin-inline:auto;padding-inline:var(--gutter)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.skip-link{position:fixed;left:16px;top:12px;z-index:200;transform:translateY(-160%);background:#fff;color:var(--ink);padding:12px 16px;border:1px solid var(--ink);font:600 11px/1 "IBM Plex Mono",monospace;text-transform:uppercase;letter-spacing:.05em;transition:transform .2s ease}
+.skip-link:focus{transform:none}
+:focus-visible{outline:2px solid var(--crimson);outline-offset:4px}
+.eyebrow{display:flex;align-items:center;gap:11px;color:var(--crimson);font:600 9px/1 "IBM Plex Mono","Courier New",monospace;text-transform:uppercase;letter-spacing:.13em}
+.eyebrow:before{content:"";width:30px;height:1px;background:currentColor;flex:0 0 auto}
+.btn{position:relative;overflow:hidden;min-height:52px;display:inline-flex;align-items:center;justify-content:center;padding:0 22px;border:1px solid transparent;border-radius:0;font:600 9px/1 "IBM Plex Mono","Courier New",monospace;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;cursor:pointer;transition:transform .22s var(--ease),background .22s ease,color .22s ease,border-color .22s ease}
+.btn:hover{transform:translateY(-2px)}.btn:disabled{cursor:wait;opacity:.7;transform:none}
+.btn-red{background:var(--crimson);border-color:var(--crimson);color:#fff}.btn-red:hover{background:#8f2031;border-color:#8f2031}
+
+/* Shared Grey Horse dapple environment */
+.dapple-stage{position:fixed;inset:-8vh -6vw;width:112vw;height:116vh;z-index:0;background:var(--charcoal);pointer-events:none;overflow:hidden}
+.dapple-layer{position:absolute;inset:-5%;width:110%;height:110%;pointer-events:none;transform-origin:center;will-change:transform,opacity}
+#dappleBack{filter:blur(1.25px)}#dappleMiddle{filter:blur(.34px)}
+.dapple-vignette{position:absolute;inset:0;z-index:5;background:radial-gradient(ellipse at 30% 43%,rgba(43,43,45,.68) 0%,rgba(43,43,45,.32) 35%,rgba(43,43,45,.05) 66%,transparent 84%),linear-gradient(180deg,rgba(0,0,0,.025),rgba(0,0,0,.09));pointer-events:none}
+.site{position:relative;z-index:2}.motion-scene{position:relative;color:var(--cream);background:rgba(43,43,45,.18)}.motion-scene>*{position:relative;z-index:2}
+
+/* Header */
+.header{position:fixed;inset:0 0 auto;z-index:80;height:var(--header);color:var(--cream);border-bottom:1px solid rgba(247,246,243,.11);transition:background .3s ease,color .3s ease,border-color .3s ease,-webkit-backdrop-filter .3s ease,backdrop-filter .3s ease}
+.header.light{background:rgba(247,246,243,.98);color:var(--ink);border-color:rgba(36,36,38,.10);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px)}
+.header-inner{height:100%;display:flex;align-items:center;justify-content:space-between;gap:28px}
+.brand-switcher{display:flex;align-items:center;gap:7px;flex:0 0 auto;min-width:0}.brand-logo{position:relative;width:184px;height:58px;display:grid;place-items:center;color:currentColor;overflow:hidden;flex:0 0 auto}.brand-logo-slide{grid-area:1/1;width:100%;display:grid;place-items:center;opacity:0;transform:translateX(7px);pointer-events:none;transition:opacity .28s ease,transform .34s var(--ease-out)}.brand-logo-slide.active{opacity:1;transform:none;pointer-events:auto}.brand-logo-slide svg{width:100%;height:54px;object-fit:contain;overflow:visible}.brand-next{width:25px;height:25px;display:grid;place-items:center;flex:0 0 auto;padding:0;border:1px solid currentColor;background:transparent;color:currentColor;opacity:.58;cursor:pointer;transition:opacity .2s ease,background .2s ease,color .2s ease,transform .2s var(--ease)}.brand-next:hover,.brand-next:focus-visible{opacity:1;background:var(--crimson);border-color:var(--crimson);color:#fff;transform:translateX(1px)}.brand-next span[aria-hidden="true"]{font-size:15px;line-height:1;transform:translateY(-1px)}
+.nav{display:flex;align-items:center;justify-content:flex-end;gap:26px;min-width:0}.nav>a,.nav-group>button{position:relative;border:0;background:transparent;padding:9px 0;font:500 9px/1 "IBM Plex Mono","Courier New",monospace;letter-spacing:.065em;text-transform:uppercase;cursor:pointer;white-space:nowrap}.nav>a:not(.nav-cta):after,.nav-group>button:after{content:"";position:absolute;left:0;right:100%;bottom:1px;height:1px;background:var(--crimson);transition:right .22s var(--ease)}.nav>a:not(.nav-cta):hover:after,.nav-group>button:hover:after,.nav>a[aria-current="page"]:after,.nav-group.current>button:after{right:0}
+.nav-cta{display:inline-flex!important;align-items:center!important;justify-content:center!important;height:42px!important;min-width:154px!important;padding:0 17px!important;background:var(--crimson)!important;border:1px solid var(--crimson)!important;color:#fff!important;white-space:nowrap!important;line-height:1!important;flex:0 0 auto;transition:background .2s ease,border-color .2s ease,transform .2s var(--ease)!important}.nav-cta:hover{background:#8f2031!important;border-color:#8f2031!important;transform:translateY(-1px)}.nav-cta:after{display:none!important}
+.nav-group{position:relative}.dropdown{position:absolute;top:calc(100% + 13px);left:-16px;width:286px;padding:10px;background:var(--cream);color:var(--ink);border:1px solid var(--hair);box-shadow:0 22px 54px rgba(0,0,0,.13);opacity:0;visibility:hidden;transform:translateY(7px);transition:opacity .18s ease,transform .2s var(--ease),visibility .18s}.nav-group:hover .dropdown,.nav-group:focus-within .dropdown,.nav-group.open .dropdown{opacity:1;visibility:visible;transform:none}.dropdown:before{content:"";position:absolute;left:0;right:0;top:-16px;height:16px}.dropdown a{display:block;padding:13px 12px;border-bottom:1px solid rgba(36,36,38,.08);font-size:11px}.dropdown a:last-child{border-bottom:0}.dropdown a:hover,.dropdown a:focus-visible{background:#efede8}
+.menu-btn{display:none;width:42px;height:42px;border:1px solid currentColor;background:transparent;cursor:pointer;flex:0 0 auto}.menu-btn span{display:block;width:18px;height:1px;margin:5px auto;background:currentColor;transition:transform .2s ease,opacity .2s ease}.menu-btn[aria-expanded="true"] span:first-child{transform:translateY(3px) rotate(45deg)}.menu-btn[aria-expanded="true"] span:last-child{transform:translateY(-3px) rotate(-45deg)}
+.mobile-menu{display:none;position:fixed;inset:var(--header) 0 0;z-index:75;background:var(--cream);color:var(--ink);padding:20px var(--gutter) 44px;overflow:auto}.mobile-menu.open{display:block}.mobile-menu a{display:block;padding:17px 0;border-bottom:1px solid var(--hair);font-family:"Bitter",Georgia,serif;font-size:27px}.mobile-menu .sub{padding-left:20px;font-size:17px;color:var(--mid)}.mobile-menu .mobile-cta{margin-top:24px;border:0;background:var(--crimson);color:#fff;padding:17px 16px;font:600 10px/1 "IBM Plex Mono",monospace;text-transform:uppercase;letter-spacing:.08em;text-align:center}
+
+/* Reveal */
+.js .reveal{opacity:0;transform:translateY(16px)}.js .reveal.in{opacity:1;transform:none;transition:opacity .62s ease,transform .62s var(--ease)}
+
+/* Hero */
+.start-hero{min-height:49svh;padding:calc(var(--header) + clamp(68px,7vh,96px)) 0 clamp(46px,6vh,68px);display:flex;align-items:flex-end}
+.start-hero-inner{width:100%}
+.start-hero .eyebrow{color:#DCCED0}
+.start-hero-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(320px,.75fr);gap:clamp(58px,9vw,144px);align-items:end;margin-top:28px}
+.start-hero h1{margin:0;max-width:900px;font-family:"Bitter",Georgia,serif;font-size:clamp(66px,7.6vw,116px);font-weight:500;line-height:.9;letter-spacing:-.062em}
+.start-hero-copy{margin:0;max-width:540px;color:rgba(247,246,243,.7);font-size:16px;line-height:1.72}
+.start-hero-bottom{margin-top:clamp(38px,5vh,58px);padding-top:20px;border-top:1px solid rgba(247,246,243,.16);display:flex;align-items:center;justify-content:space-between;gap:24px}
+.start-hero-note{margin:0;font-family:"Bitter",Georgia,serif;font-size:clamp(20px,1.9vw,28px);font-weight:500;line-height:1.22;letter-spacing:-.025em;color:rgba(247,246,243,.92)}
+.hero-jump{display:inline-flex;align-items:center;gap:10px;flex:0 0 auto;color:rgba(247,246,243,.62);font:600 8px/1 "IBM Plex Mono",monospace;text-transform:uppercase;letter-spacing:.09em;transition:color .2s ease}
+.hero-jump span{font-size:15px;transition:transform .22s var(--ease)}.hero-jump:hover{color:var(--cream)}.hero-jump:hover span{transform:translateY(3px)}
+
+/* Friendly contact form */
+.search-form-section{position:relative;background:var(--paper);padding:clamp(92px,8.5vw,138px) 0}
+.search-form-layout{display:grid;grid-template-columns:minmax(280px,.62fr) minmax(0,1.38fr);gap:clamp(68px,9vw,150px);align-items:start}
+.search-form-intro{position:sticky;top:calc(var(--header) + 44px)}
+.search-form-intro h2{margin:22px 0 0;max-width:520px;font-family:"Bitter",Georgia,serif;font-size:clamp(48px,4.7vw,70px);font-weight:500;line-height:.99;letter-spacing:-.05em}
+.search-form-intro-copy{margin:26px 0 0;max-width:455px;color:#626267;font-size:14px;line-height:1.76}
+.search-form-intro-copy p{margin:0 0 14px}.search-form-intro-copy strong{color:var(--ink);font-weight:600}
+.contact-person{margin-top:42px;padding-top:23px;border-top:1px solid var(--hair)}.contact-person small{display:block;color:var(--mid);font:600 8px/1 "IBM Plex Mono",monospace;text-transform:uppercase;letter-spacing:.09em}.contact-person strong{display:block;margin-top:15px;font-family:"Bitter",Georgia,serif;font-size:24px;font-weight:500}.contact-person span{display:block;margin-top:5px;color:#77767b;font-size:12px}.contact-person a{display:inline-flex;align-items:center;gap:9px;margin-top:20px;padding-bottom:5px;border-bottom:1px solid rgba(163,38,56,.35);font:600 9px/1 "IBM Plex Mono",monospace;text-transform:uppercase;letter-spacing:.06em;transition:color .2s ease,border-color .2s ease}.contact-person a:after{content:"↗";font-size:12px;transition:transform .2s var(--ease)}.contact-person a:hover{color:var(--crimson);border-color:var(--crimson)}.contact-person a:hover:after{transform:translate(3px,-3px)}
+.form-column{min-width:0}.form-topline{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-bottom:36px;padding-bottom:17px;border-bottom:1px solid var(--hair)}.form-topline strong{font-family:"Bitter",Georgia,serif;font-size:24px;font-weight:500;letter-spacing:-.025em}.form-topline span{color:#8d898f;font:500 8px/1.45 "IBM Plex Mono",monospace;text-transform:uppercase;letter-spacing:.08em;white-space:nowrap}
+.search-form{min-width:0}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:34px 34px}.form-field{position:relative;min-width:0}.form-field.full{grid-column:1/-1}
+.form-label,.fieldset-label{display:flex;align-items:center;gap:7px;margin-bottom:11px;color:#4d4d51;font:600 8px/1.3 "IBM Plex Mono",monospace;text-transform:uppercase;letter-spacing:.09em}.required-mark{color:var(--crimson)}.optional{color:#9a989d;font-weight:500}
+.form-input,.form-textarea{width:100%;border:0;border-bottom:1px solid rgba(36,36,38,.28);border-radius:0;background:transparent;padding:8px 0 13px;outline:none;color:var(--ink);font-size:16px;line-height:1.55;transition:border-color .2s ease,background .2s ease}.form-input::placeholder,.form-textarea::placeholder{color:#aaa7ac;opacity:1}.form-input:hover,.form-textarea:hover{border-color:rgba(36,36,38,.58)}.form-input:focus,.form-textarea:focus{border-color:var(--crimson)}
+.form-textarea{min-height:142px;resize:vertical;padding-top:9px}.form-help{display:block;margin-top:9px;color:#8f8c92;font-size:10px;line-height:1.55}.form-error{display:none;margin-top:9px;color:var(--crimson);font-size:11px;line-height:1.5}.form-field.invalid .form-error{display:block}.form-field.invalid :is(.form-input,.form-textarea){border-color:var(--crimson)}
+.context-field{margin-top:38px}.context-field .form-label{margin-bottom:6px}.context-intro{display:block;margin-bottom:14px;color:#8f8c92;font-size:11px;line-height:1.5}
+.more-context{margin-top:34px;padding-top:24px;border-top:1px solid var(--hair)}.more-context-toggle{display:inline-flex;align-items:center;gap:11px;padding:0;border:0;background:transparent;color:var(--ink);cursor:pointer;font:600 9px/1 "IBM Plex Mono",monospace;text-transform:uppercase;letter-spacing:.08em}.more-context-toggle .plus{width:22px;height:22px;display:grid;place-items:center;border:1px solid rgba(36,36,38,.24);font-size:14px;line-height:1;transition:transform .28s var(--ease),background .2s ease,color .2s ease,border-color .2s ease}.more-context-toggle:hover .plus{border-color:var(--crimson);color:var(--crimson)}.more-context-toggle[aria-expanded="true"] .plus{transform:rotate(45deg);background:var(--crimson);border-color:var(--crimson);color:#fff}
+.optional-panel-wrap{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .38s var(--ease),opacity .25s ease}.optional-panel-wrap.open{grid-template-rows:1fr;opacity:1}.optional-panel{min-height:0;overflow:hidden}.optional-panel-inner{padding-top:34px;display:grid;gap:34px}.optional-note{margin:0;color:#8f8c92;font-size:11px;line-height:1.55}.optional-fieldset{margin:0;padding:0;border:0;min-width:0}.chip-list{display:flex;flex-wrap:wrap;gap:8px}.choice-chip{position:relative;cursor:pointer}.choice-chip input{position:absolute;opacity:0;pointer-events:none}.choice-chip span{display:inline-flex;align-items:center;min-height:38px;padding:0 12px;border:1px solid rgba(36,36,38,.18);background:transparent;color:#666469;font:600 8px/1 "IBM Plex Mono",monospace;text-transform:uppercase;letter-spacing:.055em;transition:background .2s ease,color .2s ease,border-color .2s ease,transform .2s var(--ease)}.choice-chip:hover span{border-color:rgba(36,36,38,.42);color:var(--ink)}.choice-chip input:checked+span{background:var(--ink);border-color:var(--ink);color:var(--cream)}.choice-chip input:focus-visible+span{outline:2px solid var(--crimson);outline-offset:3px}
+.submit-row{padding-top:42px;margin-top:40px;border-top:1px solid var(--hair);display:grid;grid-template-columns:auto minmax(0,1fr);gap:26px;align-items:center}.submit-copy{margin:0;max-width:430px;color:#77747a;font-size:11px;line-height:1.58}.submit-copy strong{display:block;margin-bottom:4px;color:var(--ink);font-weight:600}.privacy-note{margin:18px 0 0;max-width:650px;color:#aaa6ac;font-size:9px;line-height:1.55}
+.form-global-error{display:none;margin:0 0 24px;padding:16px 18px;border-left:2px solid var(--crimson);background:#F4ECEC;color:#5d343b;font-size:12px;line-height:1.6}.form-global-error.show{display:block}.form-success{display:none;min-height:460px;align-content:center;padding:48px 0;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}.form-success.show{display:grid}.form-success .eyebrow{margin-bottom:26px}.form-success h3{margin:0;max-width:650px;font-family:"Bitter",Georgia,serif;font-size:clamp(48px,5.3vw,78px);font-weight:500;line-height:.98;letter-spacing:-.052em}.form-success p{margin:25px 0 0;max-width:570px;color:#626267;font-size:14px;line-height:1.76}.form-success a{margin-top:34px;width:max-content}
+
+/* What happens next */
+.next-section{position:relative;background:var(--cream);padding:clamp(100px,9vw,146px) 0}
+.next-head{display:grid;grid-template-columns:minmax(180px,240px) minmax(0,900px);gap:clamp(46px,7vw,112px);align-items:start;margin-bottom:clamp(58px,7vw,92px)}.next-head .eyebrow{padding-top:9px}.next-head h2{margin:0;max-width:850px;font-family:"Bitter",Georgia,serif;font-size:clamp(50px,5.3vw,80px);font-weight:500;line-height:.98;letter-spacing:-.052em}
+.next-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}.next-item{position:relative;min-height:300px;padding:34px 38px 38px 0}.next-item+.next-item{padding-left:38px;border-left:1px solid var(--hair)}.next-num{color:var(--crimson);font:600 9px/1 "IBM Plex Mono",monospace}.next-kicker{display:block;margin-top:36px;color:var(--mid);font:600 8px/1 "IBM Plex Mono",monospace;text-transform:uppercase;letter-spacing:.09em}.next-item h3{margin:13px 0 0;max-width:380px;font-family:"Bitter",Georgia,serif;font-size:clamp(30px,3vw,44px);font-weight:500;line-height:1.04;letter-spacing:-.038em}.next-item p{margin:20px 0 0;max-width:420px;color:#66666b;font-size:13px;line-height:1.72}
+.direct-email{position:relative;display:grid;grid-template-columns:minmax(200px,.42fr) minmax(0,1.58fr) 34px;gap:30px;align-items:center;margin-top:clamp(64px,7vw,96px);padding:28px 0;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);transition:padding .26s var(--ease),background .26s ease}.direct-email:before{content:"";position:absolute;left:0;top:-1px;width:0;height:1px;background:var(--crimson);transition:width .3s var(--ease)}.direct-email:hover{padding-left:16px;padding-right:16px;background:#F0EEE9}.direct-email:hover:before{width:100%}.direct-email-label{color:var(--mid);font:600 8px/1.4 "IBM Plex Mono",monospace;text-transform:uppercase;letter-spacing:.09em}.direct-email-address{font-family:"Bitter",Georgia,serif;font-size:clamp(28px,3vw,44px);font-weight:500;line-height:1.05;letter-spacing:-.035em}.direct-email-arrow{font-size:23px;color:#949196;transition:transform .22s var(--ease),color .22s ease}.direct-email:hover .direct-email-arrow{transform:translate(4px,-4px);color:var(--crimson)}.direct-email-link{position:absolute;inset:0;z-index:2}
+
+/* Footer */
+.footer{position:relative;z-index:3;background:var(--charcoal);color:rgba(247,246,243,.66);border-top:1px solid rgba(247,246,243,.10)}.footer-top{display:grid;grid-template-columns:4.2fr 2fr 2fr 2fr;gap:44px;padding:58px 0 48px}.footer-brand strong{color:var(--cream);font-family:"Bitter",Georgia,serif;font-size:24px;font-weight:500}.footer-brand p{max-width:440px;margin:17px 0 0;color:rgba(247,246,243,.43);font-size:12px;line-height:1.68}.footer-col h4{margin:0 0 16px;color:rgba(247,246,243,.34);font:500 8px/1 "IBM Plex Mono",monospace;text-transform:uppercase;letter-spacing:.09em}.footer-col a{display:block;padding:6px 0;font-size:12px;transition:color .2s ease,transform .2s var(--ease)}.footer-col a:hover{color:#fff;transform:translateX(3px)}.footer-bottom{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;padding:19px 0 28px;border-top:1px solid rgba(247,246,243,.08);color:rgba(247,246,243,.3);font:500 8px/1.4 "IBM Plex Mono",monospace;text-transform:uppercase;letter-spacing:.06em}
+
+@media(max-width:1240px){.nav{gap:18px}.brand-logo{width:164px}.nav-cta{min-width:142px!important;padding-inline:14px!important}.search-form-layout{grid-template-columns:minmax(250px,.55fr) minmax(0,1.45fr);gap:70px}}
+@media(max-width:1080px){.nav{gap:14px}.nav>a,.nav-group>button{font-size:8px}.brand-logo{width:150px}.brand-next{width:23px;height:23px}.start-hero-grid{grid-template-columns:1fr minmax(300px,.7fr);gap:54px}.search-form-layout{grid-template-columns:270px minmax(0,1fr);gap:50px}.next-item{padding-right:26px}.next-item+.next-item{padding-left:26px}}
+@media(max-width:980px){
+  :root{--header:70px}.nav{display:none}.menu-btn{display:block}.brand-logo{width:164px;height:54px}.brand-logo-slide svg{height:50px}
+  .start-hero{min-height:auto;padding-top:126px}.start-hero-grid{grid-template-columns:1fr;gap:28px}.start-hero-copy{max-width:670px}.start-hero-bottom{align-items:flex-end}
+  .search-form-layout{grid-template-columns:1fr;gap:54px}.search-form-intro{position:static;max-width:720px}.contact-person{max-width:560px}.form-topline{margin-bottom:32px}
+  .next-head{grid-template-columns:1fr;gap:22px}.next-grid{grid-template-columns:1fr}.next-item{min-height:auto;padding:30px 0 34px}.next-item+.next-item{padding-left:0;border-left:0;border-top:1px solid var(--hair)}.next-kicker{margin-top:26px}
+  .footer-top{grid-template-columns:1.4fr 1fr 1fr}.footer-brand{grid-column:1/-1}
+}
+@media(max-width:640px){
+  :root{--gutter:20px}.brand-logo{width:144px;height:51px}.brand-logo-slide svg{height:47px}.brand-next{width:22px;height:22px}.mobile-menu a{font-size:25px}
+  .start-hero{padding-top:112px;padding-bottom:48px}.start-hero h1{font-size:clamp(52px,14vw,70px);line-height:.93}.start-hero-copy{font-size:14px}.start-hero-bottom{display:block}.start-hero-note{font-size:22px}.hero-jump{margin-top:20px}
+  .search-form-section,.next-section{padding:76px 0}.search-form-intro h2,.next-head h2{font-size:clamp(42px,11vw,56px)}.search-form-intro-copy{font-size:14px}.form-topline{display:block}.form-topline span{display:block;margin-top:8px;white-space:normal}.form-grid{grid-template-columns:1fr;gap:29px}.form-field.full{grid-column:auto}.form-input,.form-textarea{font-size:16px}.form-textarea{min-height:136px}.context-field{margin-top:30px}.optional-panel-inner{padding-top:28px}.chip-list{gap:7px}.choice-chip span{min-height:40px;padding-inline:11px}.submit-row{grid-template-columns:1fr;gap:16px;margin-top:34px;padding-top:34px}.submit-row .btn{width:100%}.form-success{min-height:390px}
+  .next-item h3{font-size:34px}.direct-email{grid-template-columns:1fr 24px;gap:12px 18px;padding:24px 0}.direct-email-label{grid-column:1/-1}.direct-email-address{font-size:29px;overflow-wrap:anywhere}.direct-email:hover{padding-left:0;padding-right:0;background:transparent}
+  .footer-top{grid-template-columns:1fr 1fr;gap:32px 24px}.footer-brand{grid-column:1/-1}.footer-bottom{display:block}.footer-bottom span+span{display:block;margin-top:9px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.dapple-layer{transform:none!important}.js .reveal{opacity:1!important;transform:none!important;transition:none!important}.brand-logo-slide,.brand-next,.direct-email,.direct-email:before,.direct-email-arrow,.contact-person a:after,.btn,.hero-jump span,.more-context-toggle .plus,.optional-panel-wrap,.choice-chip span{transition:none!important}}
+</style>
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<div class="dapple-stage" id="dappleStage" aria-hidden="true"><canvas class="dapple-layer" id="dappleBack"></canvas><canvas class="dapple-layer" id="dappleMiddle"></canvas><canvas class="dapple-layer" id="dappleFront"></canvas><div class="dapple-vignette"></div></div>
+<header class="header" id="header">
+  <div class="wrap header-inner">
+    <div class="brand-switcher" aria-label="Grey Horse logo direction preview">
+      <a href="/" class="brand-logo" aria-label="Grey Horse Talent home">
+        <span class="brand-logo-slide active" data-header-logo="0"><svg id="Layer_2_one" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 370.05 160.46">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: currentColor;
+        stroke-width: 0px;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1_2_one" data-name="Layer 1">
+    <g>
+      <g>
+        <path class="cls-1" d="M167.91,81.8c-3.27,0-6.22-.54-8.85-1.6-2.64-1.05-4.9-2.58-6.8-4.58-1.9-1.99-3.36-4.41-4.38-7.24-1.02-2.83-1.52-6-1.51-9.52.01-3.81.59-7.2,1.73-10.17,1.14-2.97,2.75-5.49,4.83-7.56s4.56-3.63,7.43-4.69c2.87-1.06,6.09-1.58,9.65-1.57,3.98.01,7.52.66,10.61,1.95,3.1,1.29,5.61,3.1,7.55,5.43,1.94,2.33,3.11,5.13,3.52,8.4l-9.93-.03c-.46-1.47-1.23-2.76-2.31-3.87-1.09-1.11-2.43-1.98-4.04-2.59-1.61-.61-3.44-.92-5.49-.93-2.93,0-5.4.62-7.39,1.89-1.99,1.27-3.51,3.06-4.54,5.36-1.03,2.3-1.55,5-1.56,8.1,0,2.43.3,4.59.92,6.47s1.51,3.47,2.66,4.75c1.15,1.28,2.53,2.26,4.14,2.93,1.61.68,3.42,1.02,5.43,1.02,2.43,0,4.56-.42,6.38-1.27,1.82-.85,3.25-2.05,4.28-3.6,1.03-1.55,1.55-3.37,1.56-5.46v-1.95s2.01,1.83,2.01,1.83l-15.02-.05.02-7.1,23.43.07-.08,25.07-7.79-.02-.48-7.23h-.38c-.72,1.55-1.85,2.9-3.41,4.07-1.55,1.17-3.38,2.07-5.47,2.72-2.1.64-4.34.96-6.73.95Z"/>
+        <path class="cls-1" d="M199.7,81.33l.14-45.8,23.31.07c1.88,0,3.6.18,5.15.52,1.55.34,2.94.85,4.17,1.52,1.23.67,2.28,1.51,3.13,2.52.85,1.01,1.51,2.18,1.97,3.52.46,1.34.68,2.85.68,4.53,0,2.85-.77,5.24-2.28,7.19s-3.57,3.27-6.17,3.97v.38c1.76.3,3.19.84,4.3,1.62,1.11.78,1.91,1.77,2.41,2.96s.75,2.65.74,4.37l-.02,7.54c0,.84.03,1.7.09,2.58.06.88.28,1.76.65,2.64l-9.86-.03c-.25-.54-.43-1.28-.53-2.2-.1-.92-.15-1.93-.15-3.02l.02-5.84c0-1.3-.19-2.39-.59-3.27-.4-.88-1.09-1.56-2.1-2.05-1-.48-2.45-.73-4.33-.74l-11.75-.04.02-7.73,12.12.04c2.64,0,4.53-.61,5.66-1.87s1.71-2.82,1.71-4.71c0-1.17-.17-2.15-.53-2.92-.35-.78-.87-1.42-1.53-1.92-.67-.5-1.44-.87-2.32-1.11-.88-.23-1.86-.35-2.95-.35l-11.25-.03-.11,37.69-9.8-.03Z"/>
+        <path class="cls-1" d="M245.25,81.47l.14-45.8,33.3.1-.03,8.36-25.57-.08,2.08-2.07-.1,33.23-2.07-2.08,25.7.08-.03,8.36-33.42-.1ZM253.04,62.14l.02-7.85,22.49.07-.02,7.85-22.49-.07Z"/>
+        <path class="cls-1" d="M298.9,81.63l.05-17.47-16.88-28.39,11.25.03,6.25,11.89,4.12,7.99h.38s4.23-7.96,4.23-7.96l6.45-11.85,11.18.03-17.17,28.28-.05,17.47-9.8-.03Z"/>
+        <path class="cls-1" d="M148.26,140.16l.14-45.8,9.8.03-.14,45.8-9.8-.03ZM156.05,120.96l.03-8.36,25.7.08-.03,8.36-25.7-.08ZM179.61,140.26l.14-45.8,9.8.03-.14,45.8-9.8-.03Z"/>
+        <path class="cls-1" d="M218.94,140.95c-3.43-.01-6.55-.54-9.36-1.6-2.8-1.06-5.22-2.59-7.24-4.61-2.03-2.02-3.58-4.48-4.66-7.4-1.08-2.91-1.62-6.23-1.6-9.96.01-3.73.57-7.04,1.66-9.92,1.1-2.89,2.66-5.33,4.7-7.34,2.04-2,4.46-3.53,7.27-4.56,2.81-1.04,5.93-1.55,9.37-1.54,3.48.01,6.63.54,9.45,1.6,2.82,1.06,5.25,2.59,7.27,4.61,2.03,2.02,3.58,4.47,4.66,7.36,1.08,2.89,1.62,6.2,1.6,9.93-.01,3.73-.57,7.05-1.66,9.95-1.1,2.91-2.68,5.36-4.73,7.37-2.06,2-4.49,3.53-7.3,4.56s-5.95,1.55-9.43,1.54ZM218.96,132.59c2.68,0,4.99-.55,6.92-1.68,1.93-1.12,3.43-2.81,4.51-5.04,1.07-2.24,1.62-5.03,1.63-8.38,0-2.51-.3-4.7-.92-6.57-.62-1.86-1.49-3.44-2.59-4.72-1.11-1.28-2.46-2.24-4.08-2.87-1.61-.63-3.4-.95-5.37-.96-2.6,0-4.86.54-6.79,1.64-1.93,1.1-3.43,2.77-4.51,5.01-1.07,2.24-1.62,5.03-1.63,8.38,0,2.51.29,4.72.89,6.63.6,1.91,1.46,3.49,2.59,4.75,1.13,1.26,2.48,2.21,4.04,2.84,1.57.63,3.34.95,5.3.96Z"/>
+        <path class="cls-1" d="M248.59,140.47l.14-45.8,23.31.07c1.88,0,3.6.18,5.15.52,1.55.34,2.94.85,4.17,1.52,1.23.67,2.28,1.51,3.13,2.52.86,1.01,1.51,2.18,1.97,3.52.46,1.34.68,2.85.68,4.53,0,2.85-.77,5.24-2.28,7.19-1.51,1.94-3.57,3.27-6.17,3.97v.38c1.76.3,3.19.84,4.3,1.62,1.11.78,1.91,1.77,2.41,2.96.5,1.19.75,2.65.74,4.37l-.02,7.54c0,.84.03,1.7.09,2.58.06.88.28,1.76.65,2.64l-9.86-.03c-.25-.54-.43-1.28-.53-2.2-.1-.92-.15-1.93-.15-3.02l.02-5.84c0-1.3-.19-2.39-.59-3.27-.4-.88-1.09-1.56-2.1-2.05s-2.45-.73-4.33-.74l-11.75-.04.02-7.73,12.13.04c2.64,0,4.53-.61,5.66-1.87s1.71-2.82,1.71-4.71c0-1.17-.17-2.15-.52-2.92-.35-.78-.87-1.42-1.53-1.92-.67-.5-1.44-.87-2.32-1.11-.88-.23-1.86-.35-2.95-.35l-11.25-.03-.12,37.69-9.8-.03Z"/>
+        <path class="cls-1" d="M311.41,141.23c-4.15-.01-7.62-.65-10.42-1.92-2.8-1.27-4.91-3.03-6.33-5.3s-2.14-4.86-2.17-7.8l9.99.03c.04,1.51.38,2.82,1.03,3.93.64,1.11,1.65,1.98,3.01,2.62,1.36.63,3.13.95,5.31.96,1.67,0,3.14-.19,4.4-.58,1.26-.39,2.22-1.02,2.9-1.88.67-.86,1.01-1.95,1.01-3.29,0-1.01-.16-1.84-.5-2.51-.33-.67-.91-1.24-1.72-1.7-.81-.46-1.91-.85-3.29-1.17-1.38-.32-3.1-.67-5.15-1.05-2.64-.38-4.95-.94-6.94-1.65-1.99-.72-3.65-1.6-4.99-2.65-1.34-1.05-2.34-2.32-3-3.81-.67-1.49-1-3.24-.99-5.25,0-2.89.74-5.37,2.19-7.44s3.52-3.66,6.2-4.79c2.68-1.12,5.87-1.68,9.55-1.67,3.6.01,6.7.59,9.29,1.72,2.59,1.14,4.61,2.74,6.05,4.79,1.44,2.06,2.15,4.45,2.15,7.17l-9.86-.03c-.04-1.47-.42-2.66-1.15-3.58-.73-.92-1.68-1.6-2.85-2.02-1.17-.42-2.49-.64-3.96-.64-1.55,0-2.88.19-3.99.59-1.11.4-1.96.98-2.55,1.75-.59.77-.88,1.75-.89,2.92,0,1.22.31,2.19.93,2.92.63.74,1.75,1.32,3.36,1.77,1.61.44,3.84.92,6.69,1.43,1.97.3,3.87.7,5.71,1.21,1.84.51,3.51,1.26,5.02,2.25,1.51.99,2.7,2.35,3.57,4.09.88,1.74,1.31,3.99,1.3,6.76,0,2.72-.72,5.14-2.13,7.25-1.41,2.11-3.51,3.74-6.3,4.88-2.79,1.14-6.28,1.71-10.46,1.7Z"/>
+        <path class="cls-1" d="M336.61,140.74l.14-45.8,33.3.1-.03,8.36-25.57-.08,2.08-2.07-.1,33.23-2.07-2.08,25.7.08-.03,8.36-33.42-.1ZM344.39,121.41l.02-7.85,22.49.07-.02,7.85-22.49-.07Z"/>
+      </g>
+      <g>
+        <path class="cls-1" d="M27.85,146.96c23.61,0,48.29,0,71.28-.02h4.07s.22-4.07.22-4.07c.9-16.72-10.83-31.42-17.91-38.7-1.71-1.76-3.51-3.39-5.25-4.97-3-2.72-5.83-5.3-8.03-8.29-1.8-2.44-3.42-5.9-3.54-9.25,5.89,2.62,12.26,4.08,18.73,4.25l.79.02c1.35.02,2.62.05,3.46.38.74.29,1.6.99,2.51,1.74.56.46,1.13.92,1.71,1.35,3.19,2.32,7.12,3.71,11.07,3.9,3.07.14,5.64-.5,7.65-1.93,1.69-1.2,2.75-2.8,3.52-3.97l4.92-7.43c2.06-3.11,1.7-7.17-.88-9.88l-38.06-39.89c-1.22-1.28-2.49-2.61-2.96-3.89-.4-1.08-.41-2.61-.43-4.1l-.22-22.18-6.33,3.53c-7.67,4.28-13.32,11.97-15.11,20.57-.33,1.6-.53,3.18-.72,4.72-.38,3.05-.75,5.93-2.09,7.97-1.55,2.35-4.57,3.86-7.76,5.45-1.26.63-2.56,1.28-3.84,2.01-8.68,4.97-15.37,13.65-18.36,23.82-2.77,9.42-2.43,20.01.95,29.82,3.09,8.94,7.97,17.15,12.7,25.09,1.94,3.26,3.94,6.62,5.74,9.92l7.55-4.12c-1.88-3.44-3.92-6.87-5.9-10.2-4.51-7.57-9.17-15.4-11.96-23.5-2.81-8.14-3.1-16.87-.83-24.58,2.37-8.06,7.61-14.9,14.38-18.78,1.06-.61,2.2-1.17,3.4-1.78,3.88-1.94,8.28-4.14,11.11-8.41,2.45-3.71,2.98-7.92,3.44-11.63.18-1.43.35-2.78.61-4.04.72-3.48,2.33-6.75,4.57-9.5l.06,5.92c.02,2.01.04,4.52.96,6.99,1.09,2.96,3.15,5.12,4.81,6.86l37.7,39.51-4.63,6.99c-.42.64-.95,1.44-1.34,1.71-.14.1-.73.43-2.26.35-2.29-.11-4.57-.91-6.42-2.26-.45-.33-.88-.68-1.32-1.04-1.32-1.08-2.82-2.31-4.82-3.1-2.28-.89-4.49-.93-6.44-.97l-.72-.02c-6.92-.18-13.73-2.15-19.68-5.7l-3.95-2.35-2.09,4.1c-4.01,7.87-.89,16.87,3.37,22.66,2.71,3.68,6,6.67,9.18,9.56,1.72,1.56,3.34,3.04,4.87,4.6,8.98,9.23,14.41,19.27,15.37,28.17-24.37.02-50.42.02-74.94.02h-2.98c1.84-6.83,7.59-10.22,7.88-10.39l3.59-2.07-1.9-3.68c-5.57-10.59-12.19-26.76-12.08-43.65.08-10.92,3.5-21.75,9.65-30.51,5.32-7.59,15.19-14.03,26.39-17.23l-2.37-8.27c-13.03,3.73-24.64,11.42-31.06,20.56-7.14,10.17-11.12,22.74-11.21,35.39-.12,16.96,5.78,33.01,11.38,44.41-3.81,3.23-9.43,9.7-9.43,19.74v4.3s12.15,0,12.15,0h8.08Z"/>
+        <polygon class="cls-1" points="0 160.46 112.06 160.46 105.03 152.34 7.03 152.34 0 160.46"/>
+      </g>
+    </g>
+  </g>
+</svg></span>
+        <span class="brand-logo-slide" data-header-logo="1"><svg id="Layer_2_two" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390.7 150.37">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: currentColor;
+        stroke-width: 0px;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1_2_two" data-name="Layer 1">
+    <g>
+      <g>
+        <path class="cls-1" d="M142.56,47.17v-.91c0-14.04,9.26-21.66,24.95-21.66,14.04,0,23.7,6.88,23.93,16.43v.23h-12.73v-.23c-.4-3.87-5-6.93-11.31-6.93-7.33,0-11.88,3.98-11.88,11.82v1.59c0,7.73,4.6,11.82,11.94,11.82,5.4,0,10.23-2.1,11.59-6.31l.06-.17h-13.07v-7.9h25.41v2.05c0,14.72-9.09,21.77-23.99,21.77s-24.9-7.56-24.9-21.6Z"/>
+        <path class="cls-1" d="M198.2,67.75V25.52h24.95c13.53,0,18.81,5,18.81,12.73v.06c0,5.74-3.47,9.61-9.26,10.8v.06c4.55,1.14,6.54,3.47,7.56,9.38l.51,3.01c.51,2.79,1.08,4.49,1.82,6.2h-13.07c-.51-1.19-.91-2.67-1.59-6.14l-.57-3.01c-.51-2.9-2.61-4.32-7.96-4.32h-8.35v13.47h-12.85ZM211.05,45.35h11.14c4.38,0,6.88-1.82,6.88-5.51v-.11c0-3.13-2.27-4.83-6.65-4.83h-11.37v10.46Z"/>
+        <path class="cls-1" d="M248.84,67.75V25.52h38.14v9.38h-25.29v7.1h23.08v8.41h-23.08v7.96h25.75v9.38h-38.59Z"/>
+        <path class="cls-1" d="M308.17,67.75v-11.71l-18.47-30.52h15.06l9.09,18.19.74,1.93.79-1.93,8.92-18.19h15.18l-18.42,30.52v11.71h-12.9Z"/>
+        <path class="cls-1" d="M178.48,85.52h12.9v42.23h-12.9v-17.11h-20.52v17.11h-12.85v-42.23h12.85v15.69h20.52v-15.69Z"/>
+        <path class="cls-1" d="M197.97,107.06v-.8c0-14.1,9.09-21.66,25.07-21.66s25.07,7.56,25.07,21.66v.8c0,14.1-9.09,21.71-25.07,21.71s-25.07-7.62-25.07-21.71ZM235.09,107.34v-1.31c0-7.62-4.6-11.82-12.05-11.82s-12.05,4.09-12.05,11.82v1.31c0,7.67,4.6,11.82,12.05,11.82s12.05-4.26,12.05-11.82Z"/>
+        <path class="cls-1" d="M254.75,127.75v-42.23h24.95c13.53,0,18.81,5,18.81,12.73v.06c0,5.74-3.47,9.61-9.26,10.8v.06c4.55,1.14,6.54,3.47,7.56,9.38l.51,3.01c.51,2.79,1.08,4.49,1.82,6.2h-13.07c-.51-1.19-.91-2.67-1.59-6.14l-.57-3.01c-.51-2.9-2.62-4.32-7.96-4.32h-8.36v13.47h-12.85ZM267.59,105.35h11.14c4.38,0,6.88-1.82,6.88-5.51v-.11c0-3.13-2.27-4.83-6.65-4.83h-11.37v10.46Z"/>
+        <path class="cls-1" d="M302.66,113.77h12.39c.11,3.64,2.33,6.14,9.55,6.14,5.97,0,8.24-1.59,8.24-4.21,0-2.9-1.42-3.81-10.46-5.29-14.95-2.1-18.36-6.48-18.36-13.47s5.34-12.33,19.72-12.33,20.41,6.2,20.92,14.78h-11.88c-.34-3.18-2.16-5.91-8.64-5.91-5.4,0-7.39,1.48-7.39,3.64,0,2.27,1.19,3.58,8.01,4.55,17.96,2.44,20.86,7.33,20.86,13.75,0,8.87-7.45,13.36-21.09,13.36-15.23,0-21.66-6.48-21.88-15.01Z"/>
+        <path class="cls-1" d="M352.1,127.75v-42.23h38.14v9.38h-25.29v7.1h23.08v8.41h-23.08v7.96h25.75v9.38h-38.59Z"/>
+      </g>
+      <path class="cls-1" d="M108.28,6.95h-1.56l3.08-3.67C110.89,1.98,109.97,0,108.28,0h-9.17s-44.63,0-44.63,0C29.08,0,8.49,20.59,8.49,45.99v48.88c0,1.1.39,2.16,1.09,3l16.49,19.66c.89,1.06,2.19,1.67,3.57,1.67h61.26c1.52,0,2.34-1.77,1.37-2.93l-23.33-27.8-31.96-38.09c-2.24-2.67-.34-6.73,3.14-6.73,1.21,0,2.36.54,3.14,1.46l35.41,42.19c.62.74,1.53,1.16,2.49,1.16h14.69c1.8,0,3.25-1.46,3.25-3.25V22.97l10.7-12.75c1.09-1.3.17-3.27-1.53-3.27ZM81.69,43.65c-3.21,0-5.81-2.6-5.81-5.81s2.6-5.81,5.81-5.81,5.81,2.6,5.81,5.81-2.6,5.81-5.81,5.81ZM90.95,0h6.48-6.48Z"/>
+      <path class="cls-1" d="M7.29,128.54L.28,145.39c-.98,2.37.75,4.97,3.32,4.97h111.57c2.56,0,4.3-2.61,3.32-4.97l-7.01-16.85c-.56-1.34-1.87-2.21-3.32-2.21H10.61c-1.45,0-2.76.87-3.32,2.21Z"/>
+    </g>
+  </g>
+</svg></span>
+      </a>
+      <button class="brand-next" id="brandNext" type="button" aria-label="Show logo direction 2" title="Switch logo direction"><span aria-hidden="true">›</span><span class="sr-only" id="brandDirectionStatus">Logo direction 1 of 2</span></button>
+    </div>
+    <nav class="nav" aria-label="Primary">
+      <div class="nav-group" id="expertiseNav">
+        <button type="button" id="expertiseMenuButton" aria-haspopup="true" aria-expanded="false" aria-controls="expertiseMenu">Expertise</button>
+        <div class="dropdown" id="expertiseMenu">
+          <a href="/expertise">Expertise overview</a>
+          <a href="/expertise/foundational-software">Foundational Software</a>
+          <a href="/expertise">Hardware &amp; Embedded</a>
+          <a href="/expertise">Robotics &amp; Autonomy</a>
+          <a href="/expertise">Technical Leadership</a>
+        </div>
+      </div>
+      <a href="/how-we-search">How We Search</a>
+      <a href="/about">About</a>
+      <a href="/insights">Insights</a>
+      <a href="/start-a-search" class="nav-cta" aria-current="page">Start a Search</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span></button>
+  </div>
+</header>
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <a href="/expertise">Expertise</a>
+  <a class="sub" href="/expertise/foundational-software">Foundational Software</a>
+  <a class="sub" href="/expertise">Hardware &amp; Embedded</a>
+  <a class="sub" href="/expertise">Robotics &amp; Autonomy</a>
+  <a class="sub" href="/expertise">Technical Leadership</a>
+  <a href="/how-we-search">How We Search</a>
+  <a href="/about">About</a>
+  <a href="/insights">Insights</a>
+  <a class="mobile-cta" href="/start-a-search" aria-current="page">Start a Search</a>
+</div>
+
+<main class="site" id="main">
+  <section class="start-hero motion-scene" data-motion="hero" data-header="dark">
+    <div class="wrap start-hero-inner">
+      <div class="eyebrow reveal">Start a Search</div>
+      <div class="start-hero-grid">
+        <h1 class="reveal">Tell us about<br>the hire.</h1>
+        <p class="start-hero-copy reveal">A few details are enough to start. Share the basics, and Ryan can take it from there.</p>
+      </div>
+      <div class="start-hero-bottom reveal">
+        <p class="start-hero-note">No finished job description or perfect brief needed.</p>
+        <a class="hero-jump" href="#search-form">Start below <span aria-hidden="true">↓</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="search-form-section" data-motion="light" data-header="light" id="search-form">
+    <div class="wrap search-form-layout">
+      <aside class="search-form-intro reveal">
+        <div class="eyebrow">Start here</div>
+        <h2>Let’s talk about the hire.</h2>
+        <div class="search-form-intro-copy">
+          <p>You can come with a finished brief, a working title, or simply a hiring problem that needs more clarity.</p>
+          <p><strong>A few details are enough to start.</strong> We can get clearer on the rest together.</p>
+        </div>
+        <div class="contact-person">
+          <small>Prefer email?</small>
+          <strong>Ryan Burke</strong>
+          <span>Founder, Grey Horse Talent</span>
+          <a href="mailto:ryan@greyhorsetalent.com" data-analytics="direct_email_click">ryan@greyhorsetalent.com</a>
+        </div>
+      </aside>
+
+      <div class="form-column">
+        <div class="form-topline reveal"><strong>Let’s start with the basics.</strong><span>About a minute</span></div>
+        <div class="form-global-error" id="formGlobalError" role="alert">Something went wrong. Please try again, or email Ryan directly at <a href="mailto:ryan@greyhorsetalent.com">ryan@greyhorsetalent.com</a>.</div>
+        <form class="search-form" id="startSearchForm" novalidate>
+          <div class="form-grid reveal">
+            <div class="form-field" data-field>
+              <label class="form-label" for="name">Your name <span class="required-mark" aria-hidden="true">*</span></label>
+              <input class="form-input" id="name" name="name" type="text" autocomplete="name" placeholder="Name" required aria-describedby="name-error">
+              <span class="form-error" id="name-error">Please enter your name.</span>
+            </div>
+            <div class="form-field" data-field>
+              <label class="form-label" for="email">Work email <span class="required-mark" aria-hidden="true">*</span></label>
+              <input class="form-input" id="email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="name@company.com" required aria-describedby="email-error">
+              <span class="form-error" id="email-error">Please enter a valid email.</span>
+            </div>
+            <div class="form-field" data-field>
+              <label class="form-label" for="company">Company <span class="required-mark" aria-hidden="true">*</span></label>
+              <input class="form-input" id="company" name="company" type="text" autocomplete="organization" placeholder="Company name" required aria-describedby="company-error">
+              <span class="form-error" id="company-error">Please enter your company.</span>
+            </div>
+            <div class="form-field" data-field>
+              <label class="form-label" for="role">What are you hiring for? <span class="required-mark" aria-hidden="true">*</span></label>
+              <input class="form-input" id="role" name="role" type="text" placeholder="Founding Engineer, VP Engineering, or not sure yet" required aria-describedby="role-error">
+              <span class="form-error" id="role-error">Tell us what you are hiring for.</span>
+            </div>
+          </div>
+
+          <div class="form-field full context-field reveal" data-field>
+            <label class="form-label" for="context">Tell us a little about the search <span class="optional">Optional</span></label>
+            <span class="context-intro">A sentence or two is enough.</span>
+            <textarea class="form-textarea" id="context" name="context" placeholder="What does this person need to own, and what is making the search difficult?"></textarea>
+          </div>
+
+          <div class="more-context reveal">
+            <button class="more-context-toggle" id="moreContextToggle" type="button" aria-expanded="false" aria-controls="optionalContext"><span class="plus" aria-hidden="true">+</span><span>Add more context</span></button>
+            <div class="optional-panel-wrap" id="optionalContext" aria-hidden="true" inert>
+              <div class="optional-panel">
+                <div class="optional-panel-inner">
+                  <p class="optional-note">Only if useful. These details are not required to start the conversation.</p>
+                  <div class="form-field" data-field>
+                    <label class="form-label" for="website">Company website or LinkedIn <span class="optional">Optional</span></label>
+                    <input class="form-input" id="website" name="website" type="text" autocomplete="url" placeholder="company.com or linkedin.com/company/...">
+                  </div>
+                  <fieldset class="optional-fieldset">
+                    <legend class="fieldset-label">Hiring area <span class="optional">Optional</span></legend>
+                    <div class="chip-list">
+                      <label class="choice-chip"><input type="radio" name="expertise" value="Software"><span>Software</span></label>
+                      <label class="choice-chip"><input type="radio" name="expertise" value="Hardware & Embedded"><span>Hardware &amp; Embedded</span></label>
+                      <label class="choice-chip"><input type="radio" name="expertise" value="Robotics & Autonomy"><span>Robotics &amp; Autonomy</span></label>
+                      <label class="choice-chip"><input type="radio" name="expertise" value="Technical Leadership"><span>Technical Leadership</span></label>
+                      <label class="choice-chip"><input type="radio" name="expertise" value="Not sure yet"><span>Not sure yet</span></label>
+                    </div>
+                  </fieldset>
+                  <fieldset class="optional-fieldset">
+                    <legend class="fieldset-label">Timing <span class="optional">Optional</span></legend>
+                    <div class="chip-list">
+                      <label class="choice-chip"><input type="radio" name="timeline" value="Now"><span>Now</span></label>
+                      <label class="choice-chip"><input type="radio" name="timeline" value="Next 1-3 months"><span>Next 1–3 months</span></label>
+                      <label class="choice-chip"><input type="radio" name="timeline" value="Later"><span>Later</span></label>
+                      <label class="choice-chip"><input type="radio" name="timeline" value="Still figuring it out"><span>Still figuring it out</span></label>
+                    </div>
+                  </fieldset>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="submit-row reveal">
+            <button class="btn btn-red" id="submitButton" type="submit">Discuss the Search</button>
+            <p class="submit-copy"><strong>Takes about a minute.</strong>No finished job description needed.</p>
+          </div>
+          <p class="privacy-note reveal">We’ll only use these details to respond to your enquiry.</p>
+        </form>
+
+        <!-- Client review only: production Webflow submission should redirect to the dedicated Thank You page. -->
+        <div class="form-success" id="formSuccess" role="status" aria-live="polite" tabindex="-1">
+          <div class="eyebrow">Search received</div>
+          <h3>We’ve got the context.</h3>
+          <p>Ryan will review what you shared and follow up directly.</p>
+          <a class="btn btn-red" href="/how-we-search">See How We Search</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="next-section" data-motion="light" data-header="light">
+    <div class="wrap">
+      <header class="next-head">
+        <div class="eyebrow reveal">What Happens Next</div>
+        <h2 class="reveal">A useful conversation, then the right next step.</h2>
+      </header>
+      <div class="next-grid">
+        <article class="next-item reveal"><div class="next-num">01</div><span class="next-kicker">Review</span><h3>Ryan reviews the context.</h3><p>He looks at what you are hiring for and where the search stands today.</p></article>
+        <article class="next-item reveal"><div class="next-num">02</div><span class="next-kicker">Conversation</span><h3>You talk it through.</h3><p>The first conversation gets clearer on the role, the team and the hiring problem.</p></article>
+        <article class="next-item reveal"><div class="next-num">03</div><span class="next-kicker">Next step</span><h3>Decide how to move forward.</h3><p>If there is a fit, Grey Horse can shape the search from there.</p></article>
+      </div>
+      <div class="direct-email reveal">
+        <span class="direct-email-label">Prefer to start over email?</span>
+        <strong class="direct-email-address">ryan@greyhorsetalent.com</strong>
+        <span class="direct-email-arrow" aria-hidden="true">↗</span>
+        <a class="direct-email-link" href="mailto:ryan@greyhorsetalent.com" aria-label="Email Ryan Burke at ryan@greyhorsetalent.com" data-analytics="direct_email_click"></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer" data-header="dark">
+  <div class="wrap footer-top">
+    <div class="footer-brand"><strong>Grey Horse Talent</strong><p>Founder-led technical search across foundational software, hardware, robotics and technical leadership.</p></div>
+    <div class="footer-col"><h4>Explore</h4><a href="/">Home</a><a href="/expertise">Expertise</a><a href="/how-we-search">How We Search</a><a href="/about">About</a><a href="/insights">Insights</a><a href="/start-a-search" aria-current="page">Start a Search</a></div>
+    <div class="footer-col"><h4>Expertise</h4><a href="/expertise/foundational-software">Foundational Software</a><a href="/expertise">Hardware &amp; Embedded</a><a href="/expertise">Robotics &amp; Autonomy</a><a href="/expertise">Technical Leadership</a></div>
+    <div class="footer-col"><h4>Contact</h4><a href="/start-a-search">Start a Search</a><a href="mailto:ryan@greyhorsetalent.com">ryan@greyhorsetalent.com</a></div>
+  </div>
+  <div class="wrap footer-bottom"><span>© Grey Horse Talent</span><span>Technical search where context matters.</span></div>
+</footer>
+
+<script>
+(function(){
+"use strict";
+const CONFIG={
+  color:"#DCDBD8",distribution:.10,copyReduction:.24,
+  back:{count:2000,minSize:2.33,maxSize:11.16,minOpacity:.20,maxOpacity:.30,strength:.26,cycle:12.9,travel:18,blur:1.25},
+  middle:{count:1200,minSize:2.22,maxSize:8.84,minOpacity:.25,maxOpacity:.35,strength:.21,cycle:10,travel:30,blur:.34},
+  front:{count:700,minSize:2.09,maxSize:6.74,minOpacity:.28,maxOpacity:.38,strength:.16,cycle:7.9,travel:38,blur:0}
+};
+const SCENE={hero:{opacity:1,mouse:1,scroll:1,scale:1,ox:0,oy:0},light:{opacity:.018,mouse:.08,scroll:.12,scale:1,ox:0,oy:0}};
+const canvas={back:document.getElementById("dappleBack"),middle:document.getElementById("dappleMiddle"),front:document.getElementById("dappleFront")};
+const phase={back:.45,middle:2.12,front:4.06},scrollDepth={back:8,middle:18,front:30},mouseDepth={back:1.5,middle:4,front:7};
+const reduced=window.matchMedia("(prefers-reduced-motion: reduce)"),coarse=window.matchMedia("(pointer: coarse)");
+let target="hero",mix={opacity:1,mouse:1,scroll:1,scale:1,ox:0,oy:0},pointer={x:0,y:0,tx:0,ty:0},scrollY=window.scrollY||0,resizeTimer=null,raf=0;
+function clamp(v,min,max){return Math.min(Math.max(v,min),max)}
+function rng(seed){return function(){let t=seed+=0x6D2B79F5;t=Math.imul(t^t>>>15,t|1);t^=t+Math.imul(t^t>>>7,t|61);return((t^t>>>14)>>>0)/4294967296}}
+function rgb(hex){const v=hex.slice(1);return{r:parseInt(v.slice(0,2),16),g:parseInt(v.slice(2,4),16),b:parseInt(v.slice(4,6),16)}}
+function shuffle(a,rand){for(let i=a.length-1;i>0;i--){const j=Math.floor(rand()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function build(name){
+  const el=canvas[name],rect=el.getBoundingClientRect(),dpr=Math.min(devicePixelRatio||1,innerWidth<700?1.25:1.5),w=Math.max(1,rect.width),h=Math.max(1,rect.height),cfg=CONFIG[name],rand=rng(name==="back"?9137:name==="middle"?18239:27449),c=rgb(CONFIG.color);
+  el.width=Math.round(w*dpr);el.height=Math.round(h*dpr);const ctx=el.getContext("2d");ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,w,h);
+  const evenCount=Math.round(cfg.count*(1-CONFIG.distribution)),clusterCount=cfg.count-evenCount,cellCount=Math.ceil(evenCount*1.38),cols=Math.ceil(Math.sqrt(cellCount*w/h)),rows=Math.ceil(cellCount/cols),cw=w/cols,ch=h/rows,cells=[];
+  for(let r=0;r<rows;r++)for(let col=0;col<cols;col++)cells.push([col,r]);shuffle(cells,rand);const points=[];
+  for(let i=0;i<evenCount;i++){const cell=cells[i%cells.length];points.push({x:(cell[0]+.08+rand()*.84)*cw,y:(cell[1]+.08+rand()*.84)*ch})}
+  const centers=[[.08,.12],[.24,.18],[.43,.10],[.61,.17],[.82,.12],[.94,.26],[.12,.46],[.31,.50],[.51,.42],[.72,.49],[.91,.45],[.11,.78],[.33,.84],[.53,.79],[.73,.84],[.92,.76]];
+  for(let i=0;i<clusterCount;i++){const cc=centers[Math.floor(rand()*centers.length)],a=rand()*Math.PI*2,r=Math.pow(rand(),.76);points.push({x:clamp(cc[0]*w+Math.cos(a)*r*w*.085,0,w),y:clamp(cc[1]*h+Math.sin(a)*r*h*.085,0,h)})}shuffle(points,rand);
+  for(let i=0;i<points.length;i++){let {x,y}=points[i];const copy=x>w*.035&&x<w*.63&&y>h*.10&&y<h*.72;if(copy&&rand()<CONFIG.copyReduction)continue;const radius=cfg.minSize+rand()*(cfg.maxSize-cfg.minSize),op=cfg.minOpacity+rand()*(cfg.maxOpacity-cfg.minOpacity);ctx.beginPath();ctx.arc(x,y,radius,0,Math.PI*2);ctx.fillStyle=`rgba(${c.r},${c.g},${c.b},${op.toFixed(3)})`;ctx.fill()}
+  el.style.opacity=cfg.strength;el.style.filter=cfg.blur?`blur(${cfg.blur}px)`:"none";
+}
+function buildAll(){build("back");build("middle");build("front")}
+function detectScene(){const y=innerHeight*.5;let found="light";document.querySelectorAll("[data-motion]").forEach(sec=>{const r=sec.getBoundingClientRect();if(r.top<=y&&r.bottom>=y)found=sec.dataset.motion});target=found}
+function headerState(){const y=parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--header"))||76;let dark=false;document.querySelectorAll('[data-header="dark"]').forEach(sec=>{const r=sec.getBoundingClientRect();if(r.top<=y+2&&r.bottom>=y+2)dark=true});document.getElementById("header").classList.toggle("light",!dark)}
+function animate(now){const d=SCENE[target]||SCENE.light;for(const k of Object.keys(mix))mix[k]+=(d[k]-mix[k])*.055;pointer.x+=(pointer.tx-pointer.x)*.05;pointer.y+=(pointer.ty-pointer.y)*.05;const t=now/1000,vh=Math.max(1,innerHeight),sn=((scrollY%vh)/vh-.5)*2,mob=innerWidth<700?.78:1;for(const name of Object.keys(canvas)){const cfg=CONFIG[name];if(reduced.matches){canvas[name].style.transform="none";continue}const p=(t/cfg.cycle)*Math.PI*2+phase[name],ax=(Math.sin(p)*cfg.travel+Math.cos(p*.63+.6)*cfg.travel*.32)*mob,ay=(Math.cos(p*.82+.4)*cfg.travel*.68+Math.sin(p*.47)*cfg.travel*.24)*mob,mx=coarse.matches?0:pointer.x*mouseDepth[name]*mix.mouse,my=coarse.matches?0:pointer.y*mouseDepth[name]*mix.mouse,sy=sn*scrollDepth[name]*mix.scroll;canvas[name].style.opacity=(cfg.strength*mix.opacity).toFixed(3);canvas[name].style.transform=`translate3d(${(ax+mx+mix.ox).toFixed(2)}px,${(ay+my+sy+mix.oy).toFixed(2)}px,0) scale(${mix.scale.toFixed(4)})`}raf=requestAnimationFrame(animate)}
+
+if('IntersectionObserver' in window){const revealObs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");revealObs.unobserve(e.target)}}),{threshold:.10,rootMargin:"0px 0px -4% 0px"});document.querySelectorAll(".reveal").forEach(el=>revealObs.observe(el))}else{document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'))}
+
+const logoSlides=[...document.querySelectorAll('[data-header-logo]')],brandNext=document.getElementById('brandNext'),brandStatus=document.getElementById('brandDirectionStatus');let logoIndex=0;
+brandNext.addEventListener('click',()=>{logoIndex=(logoIndex+1)%logoSlides.length;logoSlides.forEach((el,i)=>el.classList.toggle('active',i===logoIndex));const next=((logoIndex+1)%logoSlides.length)+1;brandNext.setAttribute('aria-label',`Show logo direction ${next}`);brandStatus.textContent=`Logo direction ${logoIndex+1} of ${logoSlides.length}`});
+
+const menuBtn=document.getElementById('menuBtn'),mobileMenu=document.getElementById('mobileMenu');
+function closeMenu(){mobileMenu.classList.remove('open');document.body.classList.remove('menu-open');menuBtn.setAttribute('aria-expanded','false');menuBtn.setAttribute('aria-label','Open menu');mobileMenu.setAttribute('aria-hidden','true')}
+menuBtn.addEventListener('click',()=>{const open=!mobileMenu.classList.contains('open');mobileMenu.classList.toggle('open',open);document.body.classList.toggle('menu-open',open);menuBtn.setAttribute('aria-expanded',String(open));menuBtn.setAttribute('aria-label',open?'Close menu':'Open menu');mobileMenu.setAttribute('aria-hidden',String(!open));if(open){const first=mobileMenu.querySelector('a');if(first)setTimeout(()=>first.focus(),30)}});
+mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>closeMenu()));
+const expertiseNav=document.getElementById('expertiseNav'),expertiseBtn=document.getElementById('expertiseMenuButton');expertiseBtn.addEventListener('click',()=>{const open=!expertiseNav.classList.contains('open');expertiseNav.classList.toggle('open',open);expertiseBtn.setAttribute('aria-expanded',String(open))});document.addEventListener('click',e=>{if(!expertiseNav.contains(e.target)){expertiseNav.classList.remove('open');expertiseBtn.setAttribute('aria-expanded','false')}});document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeMenu();expertiseNav.classList.remove('open');expertiseBtn.setAttribute('aria-expanded','false')}});
+
+addEventListener('mousemove',e=>{pointer.tx=(e.clientX/innerWidth-.5)*2;pointer.ty=(e.clientY/innerHeight-.5)*2},{passive:true});addEventListener('mouseleave',()=>{pointer.tx=0;pointer.ty=0},{passive:true});addEventListener('scroll',()=>{scrollY=window.scrollY||0;detectScene();headerState()},{passive:true});addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>{buildAll();detectScene();headerState();if(innerWidth>980)closeMenu()},160)},{passive:true});document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnimationFrame(raf)}else{raf=requestAnimationFrame(animate)}});
+buildAll();detectScene();headerState();raf=requestAnimationFrame(animate);
+})();
+</script>
+
+<script>
+(function(){
+  "use strict";
+  const form=document.getElementById('startSearchForm');
+  const submit=document.getElementById('submitButton');
+  const success=document.getElementById('formSuccess');
+  const globalError=document.getElementById('formGlobalError');
+  const moreToggle=document.getElementById('moreContextToggle');
+  const optionalWrap=document.getElementById('optionalContext');
+  let began=false;
+  function track(eventName){if(Array.isArray(window.dataLayer))window.dataLayer.push({event:eventName})}
+  track('start_search_view');
+
+  moreToggle.addEventListener('click',()=>{
+    const open=moreToggle.getAttribute('aria-expanded')!=='true';
+    moreToggle.setAttribute('aria-expanded',String(open));
+    optionalWrap.classList.toggle('open',open);
+    optionalWrap.setAttribute('aria-hidden',String(!open));
+    if(open) optionalWrap.removeAttribute('inert'); else optionalWrap.setAttribute('inert','');
+  });
+
+  const rules={
+    name:v=>v.trim().length>=2,
+    email:v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()),
+    company:v=>v.trim().length>=2,
+    role:v=>v.trim().length>=2
+  };
+  function fieldWrap(el){return el.closest('[data-field]')}
+  function setInvalid(el,invalid){const wrap=fieldWrap(el);if(!wrap)return;wrap.classList.toggle('invalid',invalid);el.setAttribute('aria-invalid',String(invalid))}
+  function valid(el){const rule=rules[el.name];if(!rule)return true;const ok=rule(el.value);setInvalid(el,!ok);return ok}
+
+  [...form.elements].forEach(el=>{
+    if(!el.name)return;
+    el.addEventListener('input',()=>{
+      if(!began){began=true;track('start_search_form_begin')}
+      if(el.getAttribute('aria-invalid')==='true') valid(el);
+    });
+    el.addEventListener('change',()=>{if(!began){began=true;track('start_search_form_begin')}});
+  });
+  document.querySelectorAll('[data-analytics="direct_email_click"]').forEach(el=>el.addEventListener('click',()=>track('direct_email_click')));
+
+  form.addEventListener('submit',e=>{
+    e.preventDefault();
+    globalError.classList.remove('show');
+    const required=[...form.querySelectorAll('[required]')];
+    const bad=required.filter(el=>!valid(el));
+    if(bad.length){track('start_search_form_error');bad[0].focus();return}
+    track('start_search_form_submit');
+    submit.disabled=true;submit.textContent='Sending...';
+    /* Client-review simulation. In Webflow, use the native form submission and redirect to /thank-you. */
+    setTimeout(()=>{
+      try{form.hidden=true;success.classList.add('show');success.focus();track('start_search_form_success')}
+      catch(err){submit.disabled=false;submit.textContent='Discuss the Search';globalError.classList.add('show');globalError.focus();track('start_search_form_error')}
+    },650);
+  });
+})();
+</script>
+</body>
+</html>
